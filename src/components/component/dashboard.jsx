@@ -15,7 +15,7 @@ useEffect(()=>{
 
 const fetchData = async()=>{
   try{
-    const response = await fetch('http:localhost:8000/api/v1/dashboard/registerDetails');
+    const response = await fetch('https://nninebackend.onrender.com/api/v1/dashboard/registerDetails');
     if(!response.ok){
       alert(`Not able to fetch the data`)
     }
