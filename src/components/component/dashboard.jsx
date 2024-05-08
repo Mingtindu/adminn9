@@ -137,27 +137,24 @@ export function Dashboard() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
-                  {Object.entries(userData).map(([key, item], index) => (
-                    <TableRow key={index}>
-                      <TableCell>{index + 1}</TableCell>
-                      <TableCell>{item.name}</TableCell>
-                      <TableCell>{item.email}</TableCell>
-                      <TableCell>{item.phone}</TableCell>
-                      <TableCell>{item.levelOfEducation}</TableCell>
-                      <TableCell>{item.schoolCollegeName}</TableCell>
-                      <TableCell>{item.courses}</TableCell>
-                      <TableCell>{item.message}</TableCell>
-                      <TableCell>
-                        <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded">View</Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-
-
-                </TableRow>
+                {Object.entries(userData).map(([key, item], index) => (
+                  <TableRow key={index}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{item.name}</TableCell>
+                    <TableCell>{item.email}</TableCell>
+                    <TableCell>{item.phone}</TableCell>
+                    <TableCell>{item.levelOfEducation}</TableCell>
+                    <TableCell>{item.schoolCollegeName}</TableCell>
+                    <TableCell>{item.courses}</TableCell>
+                    <TableCell>{item.message}</TableCell>
+                    <TableCell>
+                      <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded">View</Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
+
           </div>
         </main>
       </div>
