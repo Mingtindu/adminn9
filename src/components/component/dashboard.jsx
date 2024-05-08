@@ -1,34 +1,32 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu"
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
-export function Dashboard(){
+export function Dashboard() {
+  const [userData, setUserData] = useState({})
+  useEffect(() => {
+    fetchData();
+  }, []);
+  //Data fetching from backend::
 
-const [userData, setUserData]= useState({})
-useEffect(()=>{
-  fetchData();
-},[]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://nninebackend.onrender.com/api/v1/dashboard/registerDetails');
+      if (!response.ok) {
+        alert(`Not able to fetch the data`)
+      }
+      const data = await response.json()
+      setUserData(data)
+      console.log(data);
+      console.log(userData);
 
-//Data fetching from backend::
 
-const fetchData = async()=>{
-  try{
-    const response = await fetch('https://nninebackend.onrender.com/api/v1/dashboard/registerDetails');
-    if(!response.ok){
-      alert(`Not able to fetch the data`)
+    } catch (err) {
+      console.log(`Error while fetching data err: ${err}`);
     }
-    const data = await response.json()
-    setUserData(data)
-    console.log(data);
-    console.log(userData);
-
-
-  }catch(err){
-    console.log(`Error while fetching data err: ${err}`);
   }
-}
 
   return (
     (<div className="grid min-h-screen w-full grid-cols-[280px_1fr]">
@@ -153,10 +151,9 @@ const fetchData = async()=>{
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                 {
-                  userData.forEach((item,index)=>{
+                  {Object.entries(userData).map(([key, item], index) => (
                     <TableRow key={index}>
-                      <TableCell>{index+1}</TableCell>
+                      <TableCell>{index + 1}</TableCell>
                       <TableCell>{item.name}</TableCell>
                       <TableCell>{item.email}</TableCell>
                       <TableCell>{item.phone}</TableCell>
@@ -165,13 +162,12 @@ const fetchData = async()=>{
                       <TableCell>{item.courses}</TableCell>
                       <TableCell>{item.message}</TableCell>
                       <TableCell>
-                    <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded">View</Button>
-                  </TableCell>
-
+                        <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded">View</Button>
+                      </TableCell>
                     </TableRow>
-                  })
-                 }
-              
+                  ))}
+
+
                 </TableRow>
               </TableBody>
             </Table>
