@@ -5,21 +5,19 @@ import { Button } from "@/components/ui/button"
 import { Dashboard } from "./dashboard"
 import { useState } from "react"
 export function Login() {
-  const [formData,setFormData]= useState[{
+  const [formData,setFormData]= useState({
     name:"",
     password:""
-  }]
+  })
 
   const onChangeHandler = (e)=>{
     setFormData({
       ...formData,
-      [e.field.name]:e.field.value
+      [e.target.name]:e.target.value
     })
   }
   const onClickHandler=()=>{
     console.log(formData);
-    
-  
   }
   return (
     (<div className="mx-auto max-w-sm">
@@ -38,7 +36,7 @@ export function Login() {
               id="email"
               placeholder="m@example.com"
               name="email"
-              onChange={onChangeHandler()}
+              onChange={onChangeHandler}
               value={formData.name}
               required
               type="email" />
@@ -52,7 +50,7 @@ export function Login() {
               id="password"
               required
               name="password"
-              onChange={onChangeHandler()}
+              onChange={onChangeHandler}
               value={formData.password}
               type="password" />
             <button
