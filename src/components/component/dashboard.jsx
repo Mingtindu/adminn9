@@ -138,19 +138,6 @@ export function Dashboard() {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell>1</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>john@example.com</TableCell>
-                  <TableCell>123-456-7890</TableCell>
-                  <TableCell>Bachelor's Degree</TableCell>
-                  <TableCell>University of Example</TableCell>
-                  <TableCell>Computer Science</TableCell>
-                  <TableCell>I'm interested in learning more about your program.</TableCell>
-                  <TableCell>
-                    <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded">View</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
                   {Object.entries(userData).map(([key, item], index) => (
                     <TableRow key={index}>
                       <TableCell>{index + 1}</TableCell>
