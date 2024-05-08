@@ -10,7 +10,6 @@ export function Dashboard() {
     fetchData();
   }, []);
   //Data fetching from backend::
-
   const fetchData = async () => {
     try {
       const response = await fetch('https://nninebackend.onrender.com/api/v1/dashboard/registerDetails');
@@ -148,7 +147,7 @@ export function Dashboard() {
                     <TableCell>{item.courses}</TableCell>
                     <TableCell>{item.message}</TableCell>
                     <TableCell>
-                      <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded">View</Button>
+                      <Button className="bg-[#5A67D8] text-white px-4 py-2 rounded" onclick={}>View</Button>
                     </TableCell>
                   </TableRow>
                 ))}
