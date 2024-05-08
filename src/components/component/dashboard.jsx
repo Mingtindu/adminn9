@@ -6,7 +6,7 @@ import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, Dropdown
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
 export function Dashboard(){
 
-const [userData, setUserData]= useState([])
+const [userData, setUserData]= useState({})
 useEffect(()=>{
   fetchData();
 },[]);
@@ -22,6 +22,8 @@ const fetchData = async()=>{
     const data = await response.json()
     setUserData(data)
     console.log(data);
+    console.log(userData);
+
 
   }catch(err){
     console.log(`Error while fetching data err: ${err}`);
