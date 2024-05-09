@@ -41,7 +41,7 @@ export function Login() {
     })
   }
   const onClickHandler=()=>{
-    console.log(formData);
+    login()
   }
   return (
     (<div className="mx-auto max-w-sm">
