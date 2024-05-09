@@ -4,12 +4,36 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Dashboard } from "./dashboard"
 import { useState } from "react"
+import { useRouter } from 'next/router';
 export function Login() {
   const [formData,setFormData]= useState({
-    name:"",
+    email:"",
     password:""
   })
+  const router = useRouter();
+  const login =async()=>{
+    try{
+      const response = await fetch('https://nninebackend.onrender.com/api/v1/user/login',{
+        method:"POST",
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(formData)
+      })
+      if(response.status===201){
+        router.push('/dashboard');
+      }
+      if(response.status===402){
+        alert("Password does not match")
+      }
 
+
+    }catch(err){
+      console.log(err)
+    }
+
+  }
   const onChangeHandler = (e)=>{
     setFormData({
       ...formData,
@@ -37,7 +61,7 @@ export function Login() {
               placeholder="m@example.com"
               name="email"
               onChange={onChangeHandler}
-              value={formData.name}
+              value={formData.email}
               required
               type="email" />
           </div>
